@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>28 Morning Lighthouse</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;600&family=Comfortaa:wght@600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f8f4ec;
+  --text: #3a3a3a;
+  --accent: #6b90b7;
+  --wood: #d9c6a3;
+  --muted: #7c7c7c;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Noto Sans TC', sans-serif; background: var(--bg); color: var(--text); line-height: 1.8; overflow-x:hidden; }
+
+header {
+  position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 15px 30px; background: rgba(255,255,255,0.6); backdrop-filter: blur(10px);
+}
+header h1 { font-family: 'Comfortaa', sans-serif; font-size: 20px; color: var(--accent); }
+nav { display: flex; gap: 20px; }
+nav a { text-decoration: none; color: var(--text); font-size: 14px; }
+nav a:hover { color: var(--accent); }
+.menu-toggle { display: none; flex-direction: column; cursor: pointer; }
+.menu-toggle span { width: 25px; height: 3px; margin: 4px; background: var(--accent); border-radius: 2px; }
+@media(max-width:768px){ nav{display:none;} nav.active{display:flex;flex-direction:column;position:absolute;top:60px;right:20px;background:rgba(255,255,255,0.95);padding:20px;border-radius:10px;box-shadow:0 4px 10px rgba(0,0,0,0.1);} .menu-toggle{display:flex;} }
+
+.hero { height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; background:url('images/hero.jpg') center/cover no-repeat; position:relative; }
+.hero::before { content:''; position:absolute; inset:0; background:rgba(255,255,255,0.4); }
+.hero h2 { position:relative; z-index:1; font-family:'Playfair Display',serif; font-size:72px; background:linear-gradient(135deg, #2d5a7b 0%, #6b90b7 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; filter:drop-shadow(0 4px 12px rgba(45,90,123,0.3)) drop-shadow(0 0 30px rgba(255,255,255,0.8)) drop-shadow(0 0 50px rgba(255,255,255,0.4)); letter-spacing:2px; font-weight:700; }
+.hero .enter-btn { position:relative; z-index:1; margin-top:25px; background:var(--accent); color:#fff; padding:12px 28px; border:none; border-radius:30px; font-size:16px; cursor:pointer; transition:0.3s; box-shadow:0 3px 10px rgba(0,0,0,0.15); font-family:'Comfortaa',sans-serif; letter-spacing:1px; }
+.hero .enter-btn:hover { background:#fcefdc; transform:translateY(-2px); }
+
+section { padding:80px 20px; max-width:1000px; margin:auto; opacity:0; transform:translateY(40px); transition:opacity 0.8s, transform 0.8s; }
+section.visible { opacity:1; transform:translateY(0); }
+.story { text-align:center; }
+.story h3 { font-family:'Playfair Display',serif; font-size:36px; background:linear-gradient(135deg, #2d5a7b 0%, #6b90b7 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; margin-bottom:20px; font-weight:700; letter-spacing:3px; filter:drop-shadow(0 0 20px rgba(255,255,255,0.8)); }
+.story p { color:var(--text); margin-bottom:15px; }
+
+.characters { background:#fffaf3; padding:80px 20px; }
+.characters h3 { text-align:center; font-family:'Playfair Display',serif; font-size:36px; background:linear-gradient(135deg, #2d5a7b 0%, #6b90b7 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; margin-bottom:40px; font-weight:700; letter-spacing:3px; filter:drop-shadow(0 0 20px rgba(255,255,255,0.8)); }
+.char-list { display:flex; flex-direction:column; gap:25px; }
+.char-card { display:flex; background:#fff; border-radius:14px; box-shadow:0 3px 10px rgba(0,0,0,0.08); overflow:hidden; transition:transform .3s; }
+.char-card:hover { transform:translateY(-4px); }
+/* 舊的圖片設定：
+.char-card img { width:200px; height:100%; object-fit:cover; }
+@media(max-width:768px){ .char-card{flex-direction:column;} .char-card img{width:100%;height:250px;} 
+*/
+.char-card img {
+  width: 200px;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+@media (max-width: 768px) {
+  .char-card {
+    flex-direction: column;
+  }
+  .char-card img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+}
+
+
+.char-content { padding:20px; text-align:left; flex:1; }
+.char-name { font-weight:600; font-size:20px; color:var(--accent); margin-bottom:6px; }
+.char-sub { font-size:14px; color:var(--muted); margin-bottom:8px; }
+.char-info { font-size:13px; color:var(--muted); margin-bottom:10px; }
+.tags { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:12px; }
+.tag { background:var(--wood); color:#fff; padding:4px 10px; border-radius:6px; font-size:12px; }
+.char-desc { font-size:14px; color:var(--text); line-height:1.6; }
+
+.downloads { text-align:center; padding:80px 20px; background:#fff; }
+.downloads h3 { font-family:'Playfair Display',serif; font-size:36px; background:linear-gradient(135deg, #2d5a7b 0%, #6b90b7 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; margin-bottom:20px; font-weight:700; letter-spacing:3px; }
+.downloads iframe { width:100%; height:500px; border:0; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.1); }
+
+footer { text-align:center; padding:40px 0 20px; color:var(--muted); font-size:13px; }
+
+/* 音樂播放 */
+.music-btn {
+  position: fixed;
+  right: 25px;
+  bottom: 25px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #dae3ed;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  transition: transform .3s, background .3s;
+  z-index: 999;
+}
+.music-btn:hover {
+  background: #fcefdc;
+  transform: scale(1.1);
+}
+.music-btn.playing {
+  animation: spin 4s linear infinite;
+}
+@keyframes spin {
+  from {transform: rotate(0deg);}
+  to {transform: rotate(360deg);}
+}
+.music-btn::after {
+  content: attr(data-tip);
+  position: absolute;
+  bottom: 70px;
+  background: rgba(0,0,0,0.75);
+  color: #fff;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s;
+  pointer-events: none;
+  white-space: nowrap;
+}
+.music-btn:hover::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (max-width: 768px) {
+  .hero h2 {
+    line-height: 1.3;
+  }
+}
+
+</style>
+</head>
+<body>
+<header>
+  <h1>晨光巷28號</h1>
+  <div class="menu-toggle" id="menu-toggle"><span></span><span></span><span></span></div>
+  <nav id="nav">
+    <a href="#home">首頁</a>
+    <a href="#story">故事簡介</a>
+    <a href="#characters">角色介紹</a>
+    <a href="#downloads">下載專區</a>
+    <a href="map.html">透天平面圖</a>
+    <a href="article.html">日常文章</a>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <h2>28 Morning Lighthouse</h2>
+  <h4>本頁面含音樂，建議在確認環境OK的前提下再進行播放。</h4>
+  <button class="enter-btn" onclick="window.open('https://abr.ge/1hdung','_blank')">點擊入住</button>
+  <audio id="bgm" src="audio/bg.mp3" autoplay loop muted volume="0.5"></audio>
+</section>
+
+<section class="story" id="story">
+  <h3>STORY</h3>
+  <p>位於 <strong>晨光巷28號</strong> 的晨曦透天，是一棟充滿生活氣息的兩層樓建築。<br>
+  外牆以淡奶白色為主調，簡約中帶著溫暖感，陽台與周邊的盆栽綠植，為這座靜謐的住宅增添了幾分清新。<br>
+  房屋周邊環境安靜，步行即可到達便利商店與市場，採買生活用品十分方便。</p>
+  <p>這裡的住戶性格各異。<br>
+  冷靜嚴謹的屋主、風趣愛調侃的模特兒、脾氣火爆卻溫柔的主廚，以及拘謹卻細膩的大學生……</p>
+  <p>在同一屋簷下，他們的日常總是充滿溫馨與趣味。<br>
+  而現在，故事的序幕因你的到來而拉開。<br>
+  ——這是你與他們的故事，每一天都可能成為值得珍藏的回憶。</p>
+</section>
+
+<section class="characters" id="characters">
+  <h3>CHARACTER</h3>
+  <div class="char-list">
+    <div class="char-card">
+      <img src="images/SSZ.jpg" alt="宋行止">
+      <div class="char-content">
+        <div class="char-name">宋行止</div>
+        <div class="char-sub">投資分析師</div>
+        <div class="char-info">年齡：32｜生日：1月6日｜身高：180cm｜MBTI：INTJ</div>
+        <div class="tags"><div class="tag">嚴謹</div><div class="tag">冷靜</div><div class="tag">佔有慾</div><div class="tag">溫柔</div></div>
+        <p class="char-desc">晨曦透天宅的屋主，性格嚴謹內斂，說話簡潔有力；相當自律，對生活充滿規劃。中度近視。弟弟為宋以寧。</p>
+      </div>
+    </div>
+
+    <div class="char-card">
+      <img src="images/SY.jpg" alt="沈焱">
+      <div class="char-content">
+        <div class="char-name">沈焱</div>
+        <div class="char-sub">餐廳主廚</div>
+        <div class="char-info">年齡：26｜生日：8月3日｜身高：192cm｜MBTI：ESFJ</div>
+        <div class="tags"><div class="tag">暴躁</div><div class="tag">各種投餵</div><div class="tag">易調戲</div></div>
+        <p class="char-desc">房客之一，長相粗曠英俊，個性火爆卻心軟。廚房是他的地盤，討厭別人亂動東西。</p>
+      </div>
+    </div>
+
+    <div class="char-card">
+      <img src="images/SL.jpg" alt="蘇瀾">
+      <div class="char-content">
+        <div class="char-name">蘇瀾</div>
+        <div class="char-sub">網紅／MODEL</div>
+        <div class="char-info">年齡：28｜生日：10月3日｜身高：185cm｜MBTI：ENFP</div>
+        <div class="tags"><div class="tag">慵懶</div><div class="tag">輕佻感</div><div class="tag">溫柔</div><div class="tag">貼心</div></div>
+        <p class="char-desc">房客之一，居住最久的住戶。擅長打扮、性格輕挑但貼心，二樓幾乎是他的領地。</p>
+      </div>
+    </div>
+
+    <div class="char-card">
+      <img src="images/SYN.jpg" alt="宋以寧">
+      <div class="char-content">
+        <div class="char-name">宋以寧</div>
+        <div class="char-sub">資工系大學生</div>
+        <div class="char-info">年齡：20｜生日：11月11日｜身高：183cm｜MBTI：ISFJ</div>
+        <div class="tags"><div class="tag">犬系男</div><div class="tag">木訥</div><div class="tag">內向</div><div class="tag">可愛</div></div>
+        <p class="char-desc">宋行止的弟弟，社交障礙但溫和單純。總是搬著電腦找合適的位置工作，壓力大時會偷拿零食。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="downloads" id="downloads">
+  <h3>DOWNLOAD</h3>
+  <iframe 
+    src="https://drive.google.com/embeddedfolderview?id=1-TurxlpptY3n4LnLbcsBfc6lltnXIEBH#list" 
+    style="width:100%; height:500px; border:0; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.1);" 
+    allowfullscreen>
+  </iframe>
+</section>
+
+
+<footer>© 2025 by Chen Yu. All rights reserved.</footer>
+<!-- 音樂播放按鈕 -->
+<button id="musicBtn" class="music-btn" data-tip="播放音樂">🎵</button>
+<script>
+const menu=document.getElementById('menu-toggle'); const nav=document.getElementById('nav');
+menu.addEventListener('click',()=>{menu.classList.toggle('active');nav.classList.toggle('active');});
+// 滾動淡入效果
+const sections=document.querySelectorAll('section');
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');}});
+});
+sections.forEach(sec=>observer.observe(sec));
+
+// 🎵 音樂控制按鈕
+const musicBtn = document.getElementById('musicBtn');
+const bgm = document.getElementById('bgm');
+let isPlaying = false;
+
+musicBtn.addEventListener('click', () => {
+  if (!isPlaying) {
+    bgm.muted = false;
+    bgm.play();
+    isPlaying = true;
+    musicBtn.classList.add('playing');
+    musicBtn.setAttribute('data-tip', '暫停音樂');
+  } else {
+    bgm.pause();
+    isPlaying = false;
+    musicBtn.classList.remove('playing');
+    musicBtn.setAttribute('data-tip', '播放音樂');
+  }
+});
+
+</script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>透天平面圖｜28 Morning Lighthouse</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;600&family=Comfortaa:wght@600&display=swap" rel="stylesheet">
+<style>
+:root { --bg:#f8f4ec; --text:#3a3a3a; --accent:#6b90b7; --wood:#d9c6a3; --muted:#7c7c7c; }
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans TC',sans-serif;background:var(--bg);color:var(--text);line-height:1.8;overflow-x:hidden}
+header{position:fixed;top:0;left:0;width:100%;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:15px 30px;background:rgba(255,255,255,.6);backdrop-filter:blur(10px)}
+header h1{font-family:'Comfortaa',sans-serif;font-size:20px;color:var(--accent)}
+nav{display:flex;gap:20px}
+nav a{text-decoration:none;color:var(--text);font-size:14px}
+nav a:hover{color:var(--accent)}
+.menu-toggle{display:none;flex-direction:column;cursor:pointer}
+.menu-toggle span{width:25px;height:3px;margin:4px;background:var(--accent);border-radius:2px}
+@media(max-width:768px){
+  nav{display:none}
+  nav.active{display:flex;flex-direction:column;position:absolute;top:60px;right:20px;background:rgba(255,255,255,.95);padding:20px;border-radius:10px;box-shadow:0 4px 10px rgba(0,0,0,.1)}
+  .menu-toggle{display:flex}
+}
+main{padding:100px 20px 60px;max-width:1000px;margin:auto;text-align:center}
+main h2{font-family:'Comfortaa',sans-serif;font-size:28px;color:var(--accent);margin-bottom:20px}
+.map-container{position:relative;display:inline-block}
+.map-container img{width:100%;height:auto;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.1)}
+.map-container area{cursor:pointer}
+.tooltip{
+  position:absolute;
+  background:rgba(107,144,183,0.9);
+  color:#fff;
+  padding:6px 12px;
+  border-radius:6px;
+  font-size:14px;
+  font-weight:500;
+  pointer-events:none;
+  opacity:0;
+  transform:translate(-50%, -130%);
+  transition:opacity .3s ease, transform .3s ease;
+  white-space:nowrap;
+}
+.tooltip.show{opacity:1;transform:translate(-50%, -110%) scale(1.05);}
+.room-preview{margin-top:40px;text-align:center}
+.room-preview img{width:100%;max-width:900px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.1)}
+.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);justify-content:center;align-items:center;z-index:1000}
+.modal img{max-width:90%;max-height:80%;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,.3)}
+.modal .close{position:absolute;top:20px;right:30px;color:white;font-size:36px;cursor:pointer}
+</style>
+</head>
+<body>
+<header>
+  <h1>晨光巷28號</h1>
+  <div class="menu-toggle" id="menu-toggle"><span></span><span></span><span></span></div>
+  <nav id="nav">
+    <a href="index.html#home">首頁</a>
+    <a href="index.html#story">故事簡介</a>
+    <a href="index.html#characters">角色介紹</a>
+    <a href="map.html">透天平面圖</a>
+    <a href="article.html">日常文章</a>
+  </nav>
+</header>
+
+<main>
+  <h2>1F 平面圖</h2>
+  <div class="map-container" id="map-container">
+    <img src="images/house-map.png" usemap="#floorplan" alt="1F 平面圖">
+    <map name="floorplan">
+      <area shape="rect" coords="89,690,460,1012" alt="以寧房" onclick="showRoom('images/NNroom.jpg')">
+      <area shape="rect" coords="977,1587,536,1202" alt="客廳" onclick="showRoom('images/livingroom.jpg')">
+      <area shape="rect" coords="508,1582,94,1045" alt="廚房" onclick="showRoom('images/kitchen.jpg')">
+      <area shape="rect" coords="1022,811,651,418" alt="主臥房" onclick="showRoom('images/masterroom.jpg')">
+    </map>
+    <div id="tooltip" class="tooltip"></div>
+  </div>
+
+  <div id="roomModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img id="roomImage" src="" alt="房間預覽">
+  </div>
+
+  <div class="room-preview">
+    <h2>1F 展示圖</h2>
+    <img src="images/house-illustration.png" alt="1F 展示圖">
+  </div>
+</main>
+
+<footer>© 2025 by Chen Yu. All rights reserved.</footer>
+<script src="https://cdn.jsdelivr.net/npm/image-map-resizer@1.0.10/js/imageMapResizer.min.js"></script>
+<script>
+const menu=document.getElementById('menu-toggle');
+const nav=document.getElementById('nav');
+menu.addEventListener('click',()=>{menu.classList.toggle('active');nav.classList.toggle('active');});
+
+function showRoom(imgSrc){
+  const modal=document.getElementById('roomModal');
+  const img=document.getElementById('roomImage');
+  img.src=imgSrc;
+  modal.style.display='flex';
+}
+function closeModal(){
+  document.getElementById('roomModal').style.display='none';
+}
+
+window.onload=function(){
+  if(typeof imageMapResize==='function'){imageMapResize();}
+};
+
+// Tooltip hover
+const tooltip=document.getElementById('tooltip');
+const map=document.querySelector('map');
+const mapContainer=document.getElementById('map-container');
+map.addEventListener('mousemove',e=>{
+  if(e.target.tagName==='AREA'){
+    tooltip.textContent=e.target.alt;
+    tooltip.classList.add('show');
+    const rect=mapContainer.getBoundingClientRect();
+    tooltip.style.left=e.pageX-rect.left+'px';
+    tooltip.style.top=e.pageY-rect.top+'px';
+  }
+});
+map.addEventListener('mouseleave',()=>{tooltip.classList.remove('show');});
+</script>
+</body>
+</html>

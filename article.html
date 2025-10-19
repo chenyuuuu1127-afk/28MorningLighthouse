@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>日常文章｜28 Morning Lighthouse</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;600&family=Comfortaa:wght@600&display=swap" rel="stylesheet">
+<style>
+:root { --bg:#f8f4ec; --text:#3a3a3a; --accent:#6b90b7; --wood:#d9c6a3; --muted:#7c7c7c; }
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans TC',sans-serif;background:var(--bg);color:var(--text);line-height:1.8;overflow-x:hidden}
+/* header */
+header{position:fixed;top:0;left:0;width:100%;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:15px 30px;background:rgba(255,255,255,.6);backdrop-filter:blur(10px)}
+header h1{font-family:'Comfortaa',sans-serif;font-size:20px;color:var(--accent)}
+nav{display:flex;gap:20px}
+nav a{text-decoration:none;color:var(--text);font-size:14px}
+nav a:hover{color:var(--accent)}
+.menu-toggle{display:none;flex-direction:column;cursor:pointer}
+.menu-toggle span{width:25px;height:3px;margin:4px;background:var(--accent);border-radius:2px}
+@media(max-width:768px){nav{display:none}nav.active{display:flex;flex-direction:column;position:absolute;top:60px;right:20px;background:rgba(255,255,255,.95);padding:20px;border-radius:10px;box-shadow:0 4px 10px rgba(0,0,0,.1)}.menu-toggle{display:flex}}
+/* page */
+main{padding:100px 20px 60px;max-width:950px;margin:auto}
+.page-title{font-family:'Comfortaa',sans-serif;font-size:32px;color:var(--accent);text-align:center;margin:10px 0 26px}
+.page-sub{color:var(--muted);text-align:center;margin:0 0 24px}
+.toolbar{display:flex;gap:12px;justify-content:center;margin-bottom:22px}
+.button{display:inline-block;padding:10px 16px;border-radius:10px;background:var(--accent);color:#fff;text-decoration:none;font-size:14px}
+.button.outline{background:transparent;border:1px solid var(--accent);color:var(--accent)}
+/* articles */
+.articles{display:grid;grid-template-columns:1fr;gap:18px}
+article{background:#fff;border-radius:14px;box-shadow:0 4px 12px rgba(0,0,0,.08);padding:20px}
+article h2{font-size:18px;margin-bottom:6px;color:var(--accent)}
+.meta{font-size:12px;color:var(--muted);margin-bottom:12px}
+article p{margin-bottom:10px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.tag{background:var(--wood);color:#fff;padding:4px 10px;border-radius:6px;font-size:12px}
+hr.sep{border:none;border-top:1px dashed rgba(0,0,0,.08);margin:16px 0}
+/* footer & transition */
+footer{text-align:center;padding:40px 0 20px;color:var(--muted);font-size:13px}
+.fade{position:fixed;inset:0;background:var(--bg);z-index:9999;opacity:1;transition:opacity .6s ease}
+.fade.hidden{opacity:0;pointer-events:none}
+</style>
+</head>
+<body>
+<div class="fade"></div>
+<header>
+  <h1>晨光巷28號</h1>
+  <div class="menu-toggle" id="menu-toggle"><span></span><span></span><span></span></div>
+  <nav id="nav">
+    <a href="index.html#home">首頁</a>
+    <a href="index.html#story">故事簡介</a>
+    <a href="index.html#characters">角色介紹</a>
+    <a href="map.html">透天平面圖</a>
+    <a href="article.html">日常文章</a>
+  </nav>
+</header>
+
+<main>
+  <h1 class="page-title">Daily Stories</h1>
+  <p class="page-sub">日常瞬間、對話剪影與片段心事。</p>
+  <div class="toolbar">
+    <a class="button outline" href="index.html#characters">返回角色介紹</a>
+  </div>
+
+  <section class="articles">
+    <!-- ✅ 文章樣板：複製 article 塊並替換內容即可 -->
+    <article>
+      <h2>【清晨】廚房的第一縷蒸汽</h2>
+      <div class="meta">by 沈焱 · 07:12 AM · Kitchen</div>
+      <p>鍋裡的水咕嚕嚕響起來，他把火關小，拿起旁邊那杯還冒著熱氣的黑咖啡。窗邊的薄光剛擦過檯面，落在刀鋒上，透出一絲溫柔。</p>
+      <p>「做菜要用心，吃飯要專心。」他用背後那句話提醒自己，也提醒偶爾偷吃的某人。</p>
+      <div class="tags"><span class="tag">清晨</span><span class="tag">廚房</span><span class="tag">日常</span></div>
+    </article>
+
+    <article>
+      <h2>【客廳】遙控器找不到的晚上</h2>
+      <div class="meta">by 宋以寧 · 09:48 PM · Living Room</div>
+      <p>所有沙發的縫都檢查過了，茶几也翻了兩次。最後，他在自己的筆電下方找到遙控器，沉默了三秒，默默把餅乾袋收好。</p>
+      <p>「……這不是我放的。」他小聲說。</p>
+      <div class="tags"><span class="tag">客廳</span><span class="tag">小劇場</span><span class="tag">可愛</span></div>
+    </article>
+
+    <article>
+      <h2>【陽台】風把香味帶進來</h2>
+      <div class="meta">by 蘇瀾 · 04:36 PM · Balcony</div>
+      <p>新買的香氛擴香在風裡輕輕搖著，陽光從葉片間留下斑駁的影子。他舉起相機，對準窗台那杯半融的氣泡咖啡。</p>
+      <p>「今天的色溫，剛好。」</p>
+      <div class="tags"><span class="tag">攝影</span><span class="tag">陽台</span><span class="tag">午後</span></div>
+    </article>
+
+    <article>
+      <h2>【車庫】出門前的清單</h2>
+      <div class="meta">by 宋行止 · 08:02 AM · Garage</div>
+      <p>門鎖、窗戶、瓦斯、車鑰匙、手機。每一項都在腦中劃上勾。引擎發動時，他想起冰箱裡那盒未開封的優格。</p>
+      <p>效率是一種安全感，也是愛的證明。</p>
+      <div class="tags"><span class="tag">日常</span><span class="tag">習慣</span><span class="tag">細節</span></div>
+    </article>
+
+  </section>
+</main>
+
+<footer>© 2025 by Chen Yu. All rights reserved.</footer>
+<script>
+// transition
+window.addEventListener('load',()=>{document.querySelector('.fade').classList.add('hidden')});
+// mobile nav
+const menu=document.getElementById('menu-toggle');
+const nav=document.getElementById('nav');
+menu.addEventListener('click',()=>{menu.classList.toggle('active');nav.classList.toggle('active');});
+</script>
+</body>
+</html>
