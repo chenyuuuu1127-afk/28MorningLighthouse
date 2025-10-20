@@ -98,7 +98,6 @@ footer{text-align:center;padding:40px 0 20px;color:var(--muted);font-size:13px}
 
   </section>
 </main>
-
 <footer>© 2025 by Chen Yu. All rights reserved.</footer>
 <script>
 // transition
@@ -109,4 +108,45 @@ const nav=document.getElementById('nav');
 menu.addEventListener('click',()=>{menu.classList.toggle('active');nav.classList.toggle('active');});
 </script>
 </body>
+<!-- 【d(`･∀･)b】 -->
+<script>
+document.addEventListener('contextmenu', e => {
+  e.preventDefault();
+
+  const tip = document.createElement('div');
+  tip.textContent = '即刻入住d(`･∀･)b';
+  tip.style.position = 'fixed';
+  tip.style.left = e.clientX + 'px';
+  tip.style.top = e.clientY + 'px';
+  tip.style.background = 'rgba(255, 248, 230, 0.95)';
+  tip.style.border = '1px solid #f3d5a6';
+  tip.style.borderRadius = '10px';
+  tip.style.padding = '8px 12px';
+  tip.style.fontSize = '14px';
+  tip.style.color = '#6b90b7';
+  tip.style.fontFamily = "'Noto Sans TC', sans-serif";
+  tip.style.boxShadow = '0 4px 10px rgba(0,0,0,0.15)';
+  tip.style.zIndex = 9999;
+  tip.style.transition = 'opacity 0.5s ease';
+  document.body.appendChild(tip);
+
+  // 淡出動畫
+  setTimeout(() => {
+    tip.style.opacity = '0';
+    setTimeout(() => tip.remove(), 500);
+  }, 1200);
+});
+
+// 禁止
+document.addEventListener('keydown', e => {
+  if (
+    e.key === 'F12' ||
+    (e.ctrlKey && e.shiftKey && e.key.toUpperCase() === 'I') ||
+    (e.ctrlKey && e.key.toUpperCase() === 'U')
+  ) {
+    e.preventDefault();
+  }
+});
+</script>
 </html>
+
