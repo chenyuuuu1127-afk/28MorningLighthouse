@@ -266,14 +266,12 @@ musicBtn.addEventListener('click', () => {
     musicBtn.setAttribute('data-tip', '播放音樂');
   }
 });
-
 </script>
+<!-- 🚫 禁止右鍵 + 可愛提示 -->
 <script>
-<!-- 禁止用 -->
 document.addEventListener('contextmenu', e => {
   e.preventDefault();
 
-  // 提示
   const tip = document.createElement('div');
   tip.textContent = '嘿嘿，不行偷看♡';
   tip.style.position = 'fixed';
@@ -291,14 +289,14 @@ document.addEventListener('contextmenu', e => {
   tip.style.transition = 'opacity 0.5s ease';
   document.body.appendChild(tip);
 
-  // 淡出
+  // 淡出動畫
   setTimeout(() => {
     tip.style.opacity = '0';
     setTimeout(() => tip.remove(), 500);
   }, 1200);
 });
 
-// 鎖定
+// 🔒 禁止檢查快捷鍵
 document.addEventListener('keydown', e => {
   if (
     e.key === 'F12' ||
@@ -312,5 +310,6 @@ document.addEventListener('keydown', e => {
 </body>
 
 </html>
+
 
 
