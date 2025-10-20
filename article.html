@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>日常文章｜28 Morning Lighthouse</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;600&family=Comfortaa:wght@600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;600&family=Comfortaa:wght@600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 <style>
 :root { --bg:#f8f4ec; --text:#3a3a3a; --accent:#6b90b7; --wood:#d9c6a3; --muted:#7c7c7c; }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -23,7 +23,19 @@ nav a:hover{color:var(--accent)}
 
 /* page */
 main{padding:100px 20px 60px;max-width:950px;margin:auto}
-.page-title{font-family:'Comfortaa',sans-serif;font-size:32px;color:var(--accent);text-align:center;margin:10px 0 26px}
+.page-title {
+  font-family:'Playfair Display', serif;
+  font-size:36px;
+  color:var(--accent);
+  text-align:center;
+  margin:10px 0 26px;
+  letter-spacing:2px;
+}
+@media (max-width: 768px) {
+  .page-title {
+    font-size: 28px;
+  }
+}
 .page-sub{color:var(--muted);text-align:center;margin:0 0 24px}
 .toolbar{display:flex;gap:12px;justify-content:center;margin-bottom:22px}
 .button{display:inline-block;padding:10px 16px;border-radius:10px;background:var(--accent);color:#fff;text-decoration:none;font-size:14px}
@@ -259,3 +271,4 @@ document.getElementById('articleModal').addEventListener('click',e=>{
 </script>
 </body>
 </html>
+
