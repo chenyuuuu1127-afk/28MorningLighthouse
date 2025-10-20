@@ -267,13 +267,13 @@ musicBtn.addEventListener('click', () => {
   }
 });
 </script>
-<!-- 🚫 禁止右鍵 + 可愛提示 -->
+<!-- 【d(`･∀･)b】 -->
 <script>
 document.addEventListener('contextmenu', e => {
   e.preventDefault();
 
   const tip = document.createElement('div');
-  tip.textContent = '嘿嘿，不行偷看♡';
+  tip.textContent = '即刻入住d(`･∀･)b';
   tip.style.position = 'fixed';
   tip.style.left = e.clientX + 'px';
   tip.style.top = e.clientY + 'px';
@@ -296,7 +296,7 @@ document.addEventListener('contextmenu', e => {
   }, 1200);
 });
 
-// 🔒 禁止檢查快捷鍵
+// 禁止
 document.addEventListener('keydown', e => {
   if (
     e.key === 'F12' ||
@@ -310,6 +310,7 @@ document.addEventListener('keydown', e => {
 </body>
 
 </html>
+
 
 
 
