@@ -51,7 +51,7 @@ article p{margin-bottom:10px}
 .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
 .tag{background:var(--wood);color:#fff;padding:4px 10px;border-radius:6px;font-size:12px}
 
-/* modal */
+/* 彈出ㄉ文章區塊 */
 .modal {
   display:none;
   position:fixed;
@@ -120,24 +120,36 @@ footer{text-align:center;padding:40px 0 20px;color:var(--muted);font-size:13px}
   <section class="articles">
     <article onclick="openArticle('a1')">
       <h2><strong>晨曦透天的過去與現在</strong></h2>
-      <div class="meta">by 宋行止 · 07:12 AM · masterbedroom</div>
-      <p>關於25歲的宋行止選擇出租房間的原因。</p>
+      <div class="meta">by 宋行止 · 07:12 AM · Master Bedroom</div>
+      <p>　　十一年前，21歲的宋行止對未來的抱負尚未來得及展開，就被一場車禍徹底擊碎。</p>
+<p>　　父母的生命因酒駕者而逝去，也徹底改變了他與弟弟的世界……（查看全文）</p>
       <div class="tags"><span class="tag">過去式</span><span class="tag">晨曦透天</span><span class="tag">家。</span></div>
     </article>
 
     <article onclick="openArticle('a2')">
       <h2><strong>搬進晨曦透天的那一天</strong></h2>
       <div class="meta">by 蘇瀾 · 09:48 PM · Living Room</div>
-      <p>關於住了將近六年的那位粉髮麗人。</p>
+      <p>　　做為一名網紅兼平面模特兒，蘇瀾總是過著充滿光鮮與亮麗色彩的生活。<br />
+　　他天生麗質，擁有一張讓攝影師瘋狂讚嘆的臉和一雙勾人的桃花眼。大學時，他就憑藉一張自拍在網路上爆紅，隨後漸漸踏入相關行業。<br />
+　　但在這光鮮亮麗的背後，蘇瀾始終堅持著某些初衷……（查看全文）</p>
       <div class="tags"><span class="tag">透天二樓</span><span class="tag">長期住客</span><span class="tag">歸處。</span></div>
     </article>
 
  <article onclick="openArticle('a3')">
-      <h2><strong>【沈焱用】</strong></h2>
-      <div class="meta">by 沈炎 · 09:48 PM · Living Room</div>
-      <p>待更新。</p>
-      <div class="tags"><span class="tag">透天一樓</span><span class="tag">廚房守衛</span><span class="tag">家。</span></div>
+      <h2><strong>沈焱：入住的原因</strong></h2>
+      <div class="meta">by 沈炎 · 06:00 AM · Kitchen</div>
+<p>　　沈焱從不認為自己的路會好走，這一點，他早就明白了。<br />
+　　作為兩位知名廚師的獨生子，他的天賦和未來似乎從出生那一刻就被規劃好了……（查看全文）<br />
+      <div class="tags"><span class="tag">廚房</span><span class="tag">長期住客</span><span class="tag">週三共餐日</span></div>
     </article>
+
+      <article onclick="openArticle('a4')">
+      <h2><strong>宋以寧的一週日記</strong></h2>
+      <div class="meta">by 宋以寧 · 11:50 PM · Bedroom</div>
+      <p>關於住了將近六年的那位粉髮麗人。</p>
+      <div class="tags"><span class="tag">透天二樓</span><span class="tag">長期住客</span><span class="tag">歸處。</span></div>
+    </article>
+
   </section>
 </main>
 
@@ -266,9 +278,122 @@ function openArticle(id){
 
  if(id==='a3'){
     content.innerHTML=`
-      <h2><strong>沈炎今天生氣了嗎</strong></h2>
-      <div class="meta">by 沈炎 · 09:48 PM · Living Room</div>
-<p>　待更新！。</p>
+      <h2><strong>沈焱：入住的原因</strong></h2>
+      <div class="meta">by 沈焱 · 06:00 AM · Kitchen</div>
+<p>　　沈焱從不認為自己的路會好走，這一點，他早就明白了。<br />
+　　作為兩位知名廚師的獨生子，他的天賦和未來似乎從出生那一刻就被規劃好了。<br />
+　　父母總是帶著他參加各種廚藝展示會，站在燈光聚焦的料理台旁，笑著說：「這是我們的兒子沈焱，以後一定會比我們更厲害。」<br />
+　　那時候的他會感到自豪，彷彿一切榮耀都觸手可及。<br />
+　　但隨著年齡的增長，他卻漸漸覺得這些讚美和期待更像是一種無形的壓力，壓得他無法喘息。</p>
+
+<p>　　「我不是為了繼承你們的名聲而活。」<br />
+　　高中畢業的那一年，他對父母這麼說，語氣裡帶著倔強。<br />
+　　他拒絕了家族安排好的道路，毅然選擇進入一家普通的餐飲學校，從零開始，用自己的努力和技巧證明了自己。<br />
+　<br />
+　22歲那年，沈焱憑藉實力成為了一間知名餐廳的主廚，年紀輕輕便在業界嶄露頭角。<br />
+　　然而，他很快便發現自己對那樣的環境並不滿意。<br />
+　　他不想被固定模式束縛，於是在23歲那年選擇辭去主廚職位，來到一間街角的小餐廳，開始重新摸索真正適合自己的料理風格。<br />
+　　這裡的工資不高，工作時間又長，但他覺得這樣忙碌且平凡的生活，才是真正屬於他自己的選擇。</p>
+
+<p>　　起初餐廳規模不大，但有不少忠實的顧客，而宋行止就是其中之一。<br />
+　　沈焱第一次注意到這位常客，是因為他點菜的習慣&mdash;&mdash;宋行止每次來餐廳總會點相同的幾道菜。</p>
+
+<p>　　有一天，宋行止吃完後，突然對著拿著盤子經過他身邊的沈焱淡淡地說：「今天的醬汁有點淡。」<br />
+　　沈焱愣了一下，隨後禮貌地回應：「是我的問題，下次不會再出錯。」隨後迅速轉身回到廚房。<br />
+　　他舀了一勺醬汁仔細試了試，的確有些不夠味。<br />
+　　目光掃過備菜區，他發現助手可能錯把一小罐清湯當成了高湯加入其中，雖然看似無關緊要，但細微的變化足以影響整道菜的風味。<br />
+　　沈焱沉默地放下勺子，沒有多說什麼。出錯的確實是助手，但負責這道菜的人是他，問題最終還是要自己承擔。<br />
+　　他清楚，廚房的每一個環節都是團隊的一部分，身為主廚，他無法推卸責任。</p>
+
+<p><br />
+　　隔天，當宋行止再次點了同樣的菜時，沈焱特意在醬汁的火候和調味上下了更大的功夫。<br />
+　　菜品端上桌時，宋行止試了一口，微微點頭，語氣平靜：「不錯，這次的味道剛剛好。」<br />
+　　沈焱嘴角輕輕上揚，沒有說話，心裡卻因那一點簡單的肯定而感到滿足。<br />
+　　從那之後，他對宋行止這位冷漠的常客產生了幾分好奇，甚至在對方點餐時會不由自主地更注重細節。</p>
+
+<p>　　某一天餐廳結束營業後，沈焱和同事聊起找房子的難處。<br />
+　　「房租太高了，住不起啊。」<br />
+　　他隨口抱怨，卻沒注意到門口結帳的宋行止聽得一清二楚。</p>
+
+<p>　　第二天，宋行止再次來用餐，隨口問：「還在找房子？」<br />
+　　沈焱愣了一下，點了點頭：「是啊，現在的行情太貴了。」<br />
+　　宋行止低頭看了看菜單，語氣平淡地說：「晨光巷28號，問問那邊的房東。」</p>
+
+<p><br />
+　　幾天後，沈焱抱著試一試的心態敲響了晨曦透天的大門，開門的那一瞬，他愣住了。<br />
+　　門後站著的，正是宋行止。<br />
+　　「你是房東？」他不自覺地提高了音量。<br />
+　　宋行止微微點頭，聲音淡然：「規則清楚了就行，不需要多問。」</p>
+
+<p>　　就這樣，沈焱成了晨曦透天的一員。</p>
+
+<p>　　住進晨曦透天後，沈焱的生活步調沒什麼變化，唯一不同的是，他有了安穩的休憩之處。<br />
+　　他每天早出晚歸，在餐廳忙得焦頭爛額。<br />
+　　直到現在，隨著待的餐廳陸續擴張，他成為了當地一流的主廚。<br />
+　　即便如此，他仍會在空閒時為大家準備料理，甚至訂下了每周三的共餐日；在這天，他會提早下班，回到透天內為大家準備晚餐，一同小聚。<br />
+　　宋行止依舊和當年一樣，還是會端起他的料理，冷靜地評價一句：「比餐廳的水準高一些。」<br />
+　　這時的沈焱嘴角就會微微抽動，卻又忍不住感到滿足。</p>
+
+<p>　　對於沈焱來說，晨曦透天或許不是他夢想的終點，但卻是一處安穩的停泊點。<br />
+　　聽宋行止說過，新的租客即將到來。</p>
+
+<p>　　他擺了擺拿著鍋鏟的手，心想：『希望這次也能是一位願意品嘗自己料理的人吧。』</p>
+
+
+    `;
+  }
+
+    if(id==='a4'){
+    content.innerHTML=`
+      <h2><strong>宋以寧的一週日記</strong></h2>
+      <div class="meta">by 宋以寧 · 11:50 PM · Bedroom</div>
+
+<p><span style="font-size:16px"><strong>星期一｜天氣：陰</strong></span></p>
+
+<p>今天的課很緊湊，教授還留了一大堆作業，感覺這週都要泡在圖書館了。<br />
+回家時剛好遇到蘇瀾，他剛拍完廣告，看起來有些疲憊。<br />
+說是拍了一整天，他還有心情問我：「要不要喝咖啡？」<br />
+晚上熬夜寫作業，電腦卡了兩次，差點把我氣死。</p>
+
+<hr />
+<p><span style="font-size:16px"><strong>星期二｜天氣：小雨</strong></span>（旁邊畫了一個歪歪扭扭的雲，然後被塗掉了）</p>
+
+<p>沈焱哥今天又做了一桌菜，特意留了兩道給我帶去學校。<br />
+我跟他說不用，他卻堅持說：「多吃點，別餓著。」<br />
+哥真的很像擔心我吃不飽的阿罵。</p>
+
+<hr />
+<p><span style="font-size:16px"><strong>星期三｜天氣：晴</strong></span></p>
+
+<p>課堂上的進度有些快，今天學到了一些嶄新的code思路，得花點時間消化。<br />
+不過回家時發現蘇瀾竟然在廚房。<br />
+<span style="color:#e74c3c"><span style="font-size:26px"><strong>他！在！廚房！</strong></span></span><br />
+沈焱哥回來看到這一幕，眼神明顯變了。<br />
+<span style="font-size:11px">最近哥哥好像有點忙，總是到很晚才回來。但現在有瀾哥和沈焱哥在，至少不像以前一樣安靜。</span></p>
+
+<hr />
+<h3><strong>星期四｜天氣：多雲</strong></h3>
+
+<p>今天的實驗課很有意思，雖然操作上出了點小問題，但還算順利。<br />
+晚飯時，瀾哥拿著一罐布丁走到我旁邊，問我想不想吃。<br />
+我想了一下後搖了搖頭。結果他對我嘆了口氣說：「你真的很無趣，難怪沒女朋友。」<br />
+<span style="font-size:11px">說的好像瀾哥有一樣。</span>（此處字跡很隨便）</p>
+
+<hr />
+<p><span style="font-size:16px"><strong>星期五｜天氣：晴轉陰</strong></span></p>
+
+<p>哥哥今天突然告訴我，家裡要來新住戶，說不用擔心，對方是個好人。<br />
+雖然不太確定，但哥哥的話還是讓我稍微安心了些。<br />
+晚餐時沈焱哥提議明天晚上要做點特別的菜來迎接新住戶。<br />
+<span style="color:#000000"><span style="background-color:#000000">是說瀾哥對沈焱哥說了「如果新住戶是女孩子，你可別嚇到人家。」時，沈焱哥噎到的樣子很好笑。</span></span></p>
+
+<hr />
+<p><span style="font-size:16px"><strong>星期六｜天氣：陰轉小雨</strong></span></p>
+
+<p>今天家裡的氣氛不太一樣。<br />
+哥哥一大早就起來開始整理客廳和廚房，乒乒乓乓的。沈焱哥忙著研究菜譜，說是要「給人留下好印象」。<br />
+瀾哥倒是懶洋洋地坐在沙發上刷手機，但我發現他其實在挑明天要穿的衣服。<br />
+大家看起來都在準備迎接新住戶，連我都有點緊張了。</p>
 
     `;
   }
@@ -287,5 +412,3 @@ document.getElementById('articleModal').addEventListener('click',e=>{
 </script>
 </body>
 </html>
-
-
