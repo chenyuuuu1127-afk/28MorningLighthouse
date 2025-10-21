@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>透天平面圖｜28 Morning Lighthouse</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;600&family=Comfortaa:wght@600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;600&family=Comfortaa:wght@600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 <style>
 :root { --bg:#f8f4ec; --text:#3a3a3a; --accent:#6b90b7; --wood:#d9c6a3; --muted:#7c7c7c; }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -40,6 +40,19 @@ main h2{font-family:'Comfortaa',sans-serif;font-size:28px;color:var(--accent);ma
   transform:translate(-50%, -130%);
   transition:opacity .3s ease, transform .3s ease;
   white-space:nowrap;
+}
+.page-title {
+  font-family:'Playfair Display', serif;
+  font-size:36px;
+  color:var(--accent);
+  text-align:center;
+  margin:10px 0 26px;
+  letter-spacing:2px;
+}
+@media (max-width: 768px) {
+  .page-title {
+    font-size: 28px;
+  }
 }
 footer { text-align:center; padding:40px 0 20px; color:var(--muted); font-size:13px; }
 .tooltip.show{opacity:1;transform:translate(-50%, -110%) scale(1.05);}
@@ -108,7 +121,7 @@ window.onload=function(){
   if(typeof imageMapResize==='function'){imageMapResize();}
 };
 
-// Tooltip hover
+// 懸停用
 const tooltip=document.getElementById('tooltip');
 const map=document.querySelector('map');
 const mapContainer=document.getElementById('map-container');
@@ -165,5 +178,3 @@ document.addEventListener('keydown', e => {
 </script>
 </body>
 </html>
-
-
